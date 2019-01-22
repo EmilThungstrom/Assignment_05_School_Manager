@@ -34,6 +34,16 @@ public class Course {
 		students.add(student);
 	}
 	
+	public boolean unRegStudent(Student student) {
+		for(int i = 0; i < students.size(); i++) {
+			if(students.get(i) == student) {
+				students.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
