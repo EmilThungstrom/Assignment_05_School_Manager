@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 import se.lexicon.emil.SchoolManager.App;
 import se.lexicon.emil.SchoolManager.data.Student;
 
-public class StudentEventHandler {
+public class StudentController {
 	
 	@FXML
 	private TextField idField;
@@ -30,12 +30,12 @@ public class StudentEventHandler {
 	}
 	@FXML
 	private void searchButtonPressed() {
-		presentStudent(App.studentDao.getByID(Integer.parseInt(idField.getText(), 16)));
+		presentStudent(App.studentDao.getByID(idField.getText()));
 	}
 	
 	private void presentStudent(Student student) {
 		idField.setEditable(false);
-		idField.setText(Integer.toHexString(student.getId()));
+		idField.setText(student.getId());
 		nameField.setText(student.getFirstName());
 		surnameField.setText(student.getSurname());
 		adressField.setText(student.getAdress());

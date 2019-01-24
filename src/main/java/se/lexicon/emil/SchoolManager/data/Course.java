@@ -99,7 +99,7 @@ public class Course {
 		this.id = id;
 	}
 	
-	public String getCourseName() {
+	public String getName() {
 		return courseName;
 	}
 	

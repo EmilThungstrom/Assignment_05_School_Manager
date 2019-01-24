@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import se.lexicon.emil.SchoolManager.App;
 
-public class MainEventHandler {
+public class MainController {
 	
 	@FXML
 	private void StudentButtonPressed() throws IOException {

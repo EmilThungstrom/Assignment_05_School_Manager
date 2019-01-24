@@ -30,9 +30,9 @@ public class StudentDaoList implements StudentDao {
 	}
 
 	@Override
-	public Student getByID(int id) {
+	public Student getByID(String id) {
 		for(Student student : students) {
-			if(student.getId() == id)
+			if(student.getId().equals(id))
 				return student;
 		}
 		return null;

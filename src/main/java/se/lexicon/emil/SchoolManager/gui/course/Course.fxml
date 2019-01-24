@@ -3,13 +3,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lexicon.emil.SchoolManager.gui.course.CourseEventHandler">
+<BorderPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lexicon.emil.SchoolManager.gui.course.CourseController">
    <left>
       <VBox prefWidth="80.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
@@ -29,7 +31,16 @@
             <TextField fx:id="idField" />
             <TextField fx:id="nameField" />
             <DatePicker fx:id="startDate" />
-            <TextField fx:id="durationField" maxWidth="175.0" />
+            <TextField fx:id="durationField" maxWidth="170.0" />
+            <TableView fx:id="tableView" prefHeight="320.0" prefWidth="410.0">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="surnameColumn" prefWidth="100.0" text="Surname" />
+                  <TableColumn fx:id="emailColumn" prefWidth="225.0" text="Email" />
+                  <TableColumn fx:id="adressColumn" prefWidth="170.0" text="Adress" />
+              </columns>
+            </TableView>
          </children>
          <padding>
             <Insets right="10.0" top="10.0" />

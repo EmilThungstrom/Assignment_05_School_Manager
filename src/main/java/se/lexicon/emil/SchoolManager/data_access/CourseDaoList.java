@@ -35,7 +35,7 @@ public class CourseDaoList implements CourseDao {
 		List<Course> retCourses = new LinkedList<>();
 		
 		for(Course course : courses) {
-			if(course.getCourseName().contains(courseName))
+			if(course.getName().contains(courseName))
 				retCourses.add(course);
 		}
 		return retCourses;

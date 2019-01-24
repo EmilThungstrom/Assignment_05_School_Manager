@@ -103,8 +103,8 @@ public class Student {
 	}
 	//getters and setters
 	//---------------------------------------------------------------------------------------------------------------------------------------
-	public int getId() {
-		return id;
+	public String getId() {
+		return Integer.toHexString(id);
 	}
 	
 	public void setId(int id) {

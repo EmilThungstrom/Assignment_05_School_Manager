@@ -3,6 +3,8 @@ package se.lexicon.emil.SchoolManager;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import javafx.application.Application;
@@ -55,6 +57,9 @@ public class App extends Application {
 			courses[i].setStartDate(Date.valueOf(LocalDate.of((2000 + random.nextInt(20)), (random.nextInt(11) + 1), (random.nextInt(27) + 1))));
 			courses[i].setWeekDuration(random.nextInt(51) + 1);
 		}
+		
+		courses[0].setStudents(Arrays.asList(students));
+		
 		for(int i = 0; i < TEST_ARRAY_LENGTH; i++) {
 			System.out.println(Integer.toHexString(courses[i].getId()));
 			studentDao.addStudent(students[i]);
