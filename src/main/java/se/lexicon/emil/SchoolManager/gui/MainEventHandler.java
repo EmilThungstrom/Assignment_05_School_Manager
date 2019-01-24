@@ -16,4 +16,10 @@ public class MainEventHandler {
 		Scene scene = new Scene(root);
 		App.getPrimaryStage().setScene(scene);
 	}
+	@FXML
+	private void CourseButtonPressed() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("course/Course.fxml"));
+		Scene scene = new Scene(root);
+		App.getPrimaryStage().setScene(scene);
+	}
 }

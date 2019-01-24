@@ -21,6 +21,7 @@ public class StudentEventHandler {
 	
 	@FXML
 	private void newButtonPressed() {
+		idField.setEditable(true);
 		idField.setText("");
 		nameField.setText("");
 		surnameField.setText("");
@@ -33,6 +34,7 @@ public class StudentEventHandler {
 	}
 	
 	private void presentStudent(Student student) {
+		idField.setEditable(false);
 		idField.setText(Integer.toHexString(student.getId()));
 		nameField.setText(student.getFirstName());
 		surnameField.setText(student.getSurname());

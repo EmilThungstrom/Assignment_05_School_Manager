@@ -56,7 +56,7 @@ public class App extends Application {
 			courses[i].setWeekDuration(random.nextInt(51) + 1);
 		}
 		for(int i = 0; i < TEST_ARRAY_LENGTH; i++) {
-			System.out.println(Integer.toHexString(students[i].getId()));
+			System.out.println(Integer.toHexString(courses[i].getId()));
 			studentDao.addStudent(students[i]);
 			courseDao.addCourse(courses[i]);
 		}
