@@ -22,9 +22,9 @@ public class CourseDaoList implements CourseDao {
 	}
 
 	@Override
-	public Course getByID(int id) {
+	public Course getByID(String id) {
 		for(Course course : courses) {
-			if(course.getId() == id)
+			if(course.getId().equals(id))
 				return course;
 		}
 		return null;

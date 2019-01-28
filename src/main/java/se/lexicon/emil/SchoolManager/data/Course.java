@@ -91,8 +91,8 @@ public class Course {
 				+ weekDuration + ", students=" + students + "]";
 	}
 
-	public int getId() {
-		return id;
+	public String getId() {
+		return Integer.toHexString(id);
 	}
 	
 	public void setId(int id) {

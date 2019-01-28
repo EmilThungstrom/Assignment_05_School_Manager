@@ -48,12 +48,12 @@ public class CourseController {
 	}
 	@FXML
 	private void searchButtonPressed() {
-		presentCourse(App.courseDao.getByID(Integer.parseInt(idField.getText(), 16)));
+		presentCourse(App.courseDao.getByID(idField.getText()));
 	}
 	
-	private void presentCourse(Course course) {
+	public void presentCourse(Course course) {
 		idField.setEditable(false);
-		idField.setText(Integer.toHexString(course.getId()));
+		idField.setText(course.getId());
 		nameField.setText(course.getName());
 		startDate.setValue(course.getStartDate().toLocalDate());
 		durationField.setText(String.valueOf(course.getWeekDuration()));

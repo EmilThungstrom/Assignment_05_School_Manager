@@ -55,7 +55,6 @@
          <children>
             <Button mnemonicParsing="false" onAction="#newButtonPressed" prefWidth="75.0" text="New" />
             <Button mnemonicParsing="false" prefWidth="75.0" text="Save" />
-            <Button mnemonicParsing="false" onAction="#searchButtonPressed" prefWidth="75.0" text="Search" />
          </children>
       </HBox>
    </bottom>

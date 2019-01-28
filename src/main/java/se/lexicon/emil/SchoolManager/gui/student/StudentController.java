@@ -18,7 +18,6 @@ public class StudentController {
 	@FXML
 	private TextField emailField;
 	
-	
 	@FXML
 	private void newButtonPressed() {
 		idField.setEditable(true);
@@ -33,7 +32,7 @@ public class StudentController {
 		presentStudent(App.studentDao.getByID(idField.getText()));
 	}
 	
-	private void presentStudent(Student student) {
+	public void presentStudent(Student student) {
 		idField.setEditable(false);
 		idField.setText(student.getId());
 		nameField.setText(student.getFirstName());

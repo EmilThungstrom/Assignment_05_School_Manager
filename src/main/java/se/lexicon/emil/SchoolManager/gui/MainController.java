@@ -11,14 +11,20 @@ import se.lexicon.emil.SchoolManager.App;
 public class MainController {
 	
 	@FXML
-	private void StudentButtonPressed() throws IOException {
+	private void studentButtonPressed() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("student/Student.fxml"));
 		Scene scene = new Scene(root);
 		App.getPrimaryStage().setScene(scene);
 	}
 	@FXML
-	private void CourseButtonPressed() throws IOException {
+	private void courseButtonPressed() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("course/Course.fxml"));
+		Scene scene = new Scene(root);
+		App.getPrimaryStage().setScene(scene);
+	}
+	@FXML
+	private void searchButtonPressed() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("search/SearchStudent.fxml"));
 		Scene scene = new Scene(root);
 		App.getPrimaryStage().setScene(scene);
 	}

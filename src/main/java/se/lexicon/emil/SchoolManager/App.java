@@ -61,7 +61,7 @@ public class App extends Application {
 		courses[0].setStudents(Arrays.asList(students));
 		
 		for(int i = 0; i < TEST_ARRAY_LENGTH; i++) {
-			System.out.println(Integer.toHexString(courses[i].getId()));
+			System.out.println(students[i].getId());
 			studentDao.addStudent(students[i]);
 			courseDao.addCourse(courses[i]);
 		}

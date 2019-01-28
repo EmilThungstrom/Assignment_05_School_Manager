@@ -8,7 +8,7 @@ import se.lexicon.emil.SchoolManager.data.Course;
 public interface CourseDao {
 	
 	Course addCourse(Course course);
-	Course getByID(int id);
+	Course getByID(String id);
 	
 	List<Course> getByName(String courseName);
 	List<Course> getByDate(LocalDate startDate);
