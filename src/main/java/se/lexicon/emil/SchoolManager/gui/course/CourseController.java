@@ -1,18 +1,30 @@
 package se.lexicon.emil.SchoolManager.gui.course;
 
+import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import se.lexicon.emil.SchoolManager.App;
 import se.lexicon.emil.SchoolManager.data.Course;
 import se.lexicon.emil.SchoolManager.data.Student;
+import se.lexicon.emil.SchoolManager.gui.search.SearchAndReturnStage;
+import se.lexicon.emil.SchoolManager.gui.search.SearchAndReturnStudentController;
+import se.lexicon.emil.SchoolManager.gui.search.SearchStudentController;
+import se.lexicon.emil.SchoolManager.gui.student.StudentController;
 
 public class CourseController {
 	@FXML
@@ -37,9 +49,11 @@ public class CourseController {
 	@FXML
 	private TableColumn<Student, String> adressColumn;
 	
+	private Course course;
+	
 	@FXML
 	private void newButtonPressed() {
-		idField.setEditable(true);
+
 		idField.setText("");
 		nameField.setText("");
 		startDate.setValue(LocalDate.now());
@@ -47,12 +61,39 @@ public class CourseController {
 		tableView.setItems(null);
 	}
 	@FXML
-	private void searchButtonPressed() {
-		presentCourse(App.courseDao.getByID(idField.getText()));
+	private void addStudentButtonPressed() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../search/SearchStudent.fxml"));
+		Parent root1;
+		SearchAndReturnStudentController searchAndReturnStudentController = new SearchAndReturnStudentController();
+		try {
+			fxmlLoader.setController(searchAndReturnStudentController);
+			root1 = (Parent) fxmlLoader.load();
+			SearchAndReturnStage stage = new SearchAndReturnStage();
+			stage.setScene(new Scene(root1));
+			course.getStudents().add(stage.showAndReturn(searchAndReturnStudentController));
+				
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	private void removeStudentButtonPressed() {
+		ArrayList<Student> list = new ArrayList<Student>(course.getStudents());
+		list.remove(tableView.getSelectionModel().getFocusedIndex());
+		course.setStudents(list);
+		tableView.setItems(FXCollections.observableArrayList(course.getStudents()));
+	}
+	@FXML
+	private void saveButtonPressed() {
+		
+		course.setCourseName(nameField.getText());
+		course.setStartDate(Date.valueOf(startDate.getValue()));
+		course.setWeekDuration(Integer.valueOf(durationField.getText()));
 	}
 	
 	public void presentCourse(Course course) {
-		idField.setEditable(false);
+
+		this.course = course;
 		idField.setText(course.getId());
 		nameField.setText(course.getName());
 		startDate.setValue(course.getStartDate().toLocalDate());
@@ -63,10 +104,6 @@ public class CourseController {
 		surnameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("surname"));
 		emailColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
 		adressColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("adress"));
-		tableView.setItems(loadStudents(course));
-	}
-	
-	private ObservableList<Student> loadStudents(Course course){
-		return FXCollections.observableArrayList(course.getStudents());
+		tableView.setItems(FXCollections.observableArrayList(course.getStudents()));
 	}
 }

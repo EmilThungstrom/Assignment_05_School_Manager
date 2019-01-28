@@ -18,9 +18,10 @@ public class StudentController {
 	@FXML
 	private TextField emailField;
 	
+	private Student student;
+	
 	@FXML
 	private void newButtonPressed() {
-		idField.setEditable(true);
 		idField.setText("");
 		nameField.setText("");
 		surnameField.setText("");
@@ -28,12 +29,17 @@ public class StudentController {
 		emailField.setText("");
 	}
 	@FXML
-	private void searchButtonPressed() {
-		presentStudent(App.studentDao.getByID(idField.getText()));
+	private void saveButtonPressed() {
+		
+		student.setFirstName(nameField.getText());
+		student.setSurname(surnameField.getText());
+		student.setEmail(emailField.getText());
+		student.setAdress(adressField.getText());
 	}
 	
 	public void presentStudent(Student student) {
-		idField.setEditable(false);
+		
+		this.student = student;
 		idField.setText(student.getId());
 		nameField.setText(student.getFirstName());
 		surnameField.setText(student.getSurname());

@@ -15,20 +15,33 @@
    <left>
       <VBox prefWidth="80.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+            <VBox prefHeight="120.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+               </children>
+               <padding>
+                  <Insets left="10.0" top="15.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#addStudentButtonPressed" prefWidth="75.0" text="Add" />
+                  <Button mnemonicParsing="false" onAction="#removeStudentButtonPressed" prefWidth="75.0" text="Remove" />
+               </children>
+               <padding>
+                  <Insets left="2.0" />
+               </padding>
+            </VBox>
          </children>
-         <padding>
-            <Insets left="10.0" top="15.0" />
-         </padding>
       </VBox>
    </left>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="idField" />
+            <TextField fx:id="idField" editable="false" />
             <TextField fx:id="nameField" />
             <DatePicker fx:id="startDate" />
             <TextField fx:id="durationField" maxWidth="170.0" />
@@ -54,7 +67,7 @@
          </padding>
          <children>
             <Button mnemonicParsing="false" onAction="#newButtonPressed" prefWidth="75.0" text="New" />
-            <Button mnemonicParsing="false" prefWidth="75.0" text="Save" />
+            <Button mnemonicParsing="false" onAction="#saveButtonPressed" prefWidth="75.0" text="Save" />
          </children>
       </HBox>
    </bottom>
