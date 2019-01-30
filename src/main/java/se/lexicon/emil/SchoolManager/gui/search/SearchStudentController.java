@@ -45,6 +45,9 @@ public class SearchStudentController {
 	@FXML
 	protected TableColumn<Student, String> adressColumn;
 
+	public static Student student;
+	public static boolean isPrompt;
+	
 	@FXML
 	protected void searchButtonPressed() {
 
@@ -94,18 +97,25 @@ public class SearchStudentController {
 	@FXML
 	private void searchViewerDoubleClicked(MouseEvent event) {
 		if (event.getClickCount() >= 2 && !searchView.getSelectionModel().isEmpty()) {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../student/Student.fxml"));
-			Parent root1;
-			try {
-				root1 = (Parent) fxmlLoader.load();
-				Stage stage = new Stage();
-				stage.setScene(new Scene(root1));
-				stage.show();
+			if (isPrompt) {
+				student = searchView.getSelectionModel().getSelectedItem();
+				((Stage) searchView.getScene().getWindow()).close();
 
-				((StudentController) fxmlLoader.getController())
-						.presentStudent(searchView.getSelectionModel().getSelectedItem());
-			} catch (IOException e) {
-				e.printStackTrace();
+			} else {
+
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../student/Student.fxml"));
+				Parent root1;
+				try {
+					root1 = (Parent) fxmlLoader.load();
+					Stage stage = new Stage();
+					stage.setScene(new Scene(root1));
+					stage.show();
+
+					((StudentController) fxmlLoader.getController())
+							.presentStudent(searchView.getSelectionModel().getSelectedItem());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

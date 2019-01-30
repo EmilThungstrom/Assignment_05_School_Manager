@@ -1,18 +1,25 @@
 package se.lexicon.emil.SchoolManager.gui.course;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import se.lexicon.emil.SchoolManager.data.Course;
 import se.lexicon.emil.SchoolManager.data.Student;
+import se.lexicon.emil.SchoolManager.gui.search.SearchStudentController;
+import se.lexicon.emil.SchoolManager.gui.student.StudentController;
 
 public class CourseController {
 	@FXML
@@ -51,19 +58,30 @@ public class CourseController {
 
 	@FXML
 	private void addStudentButtonPressed() {
-//		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../search/SearchStudent.fxml"));
-//		Parent root1;
-//		SearchAndReturnStudentController searchAndReturnStudentController = new SearchAndReturnStudentController();
-//		try {
-//			fxmlLoader.setController(searchAndReturnStudentController);
-//			root1 = (Parent) fxmlLoader.load();
-//			SearchAndReturnStage stage = new SearchAndReturnStage();
-//			stage.setScene(new Scene(root1));
-//			course.getStudents().add(stage.showAndReturn(searchAndReturnStudentController));
-//				
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../search/SearchStudent.fxml"));
+		SearchStudentController.student = null;
+		SearchStudentController.isPrompt = true;
+		Parent root1;
+		try {
+			root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root1));
+			stage.showAndWait();
+			System.out.println("woop");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Student student = SearchStudentController.student;
+		SearchStudentController.isPrompt = false;
+
+		if(!(student == null)) {
+			ArrayList<Student> list = new ArrayList<Student>(course.getStudents());
+			list.add(student);
+			course.setStudents(list);
+			tableView.setItems(FXCollections.observableArrayList(course.getStudents()));
+		}
 	}
 
 	@FXML
