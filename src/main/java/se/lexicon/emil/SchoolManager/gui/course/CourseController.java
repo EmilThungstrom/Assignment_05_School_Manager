@@ -67,7 +67,6 @@ public class CourseController {
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
 			stage.showAndWait();
-			System.out.println("woop");
 			
 		} catch (IOException e) {
 			e.printStackTrace();

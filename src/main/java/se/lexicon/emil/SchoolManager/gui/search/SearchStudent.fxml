@@ -17,12 +17,12 @@
          <top>
             <HBox prefHeight="30.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
+                  <Button mnemonicParsing="false" onAction="#searchButtonPressed" prefWidth="75.0" text="Search" />
                   <Button fx:id="searchTypeButton" mnemonicParsing="false" onAction="#switchSearchType" prefWidth="100.0" text="Student">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#searchButtonPressed" prefWidth="75.0" text="Search" />
                </children>
                <BorderPane.margin>
                   <Insets />
