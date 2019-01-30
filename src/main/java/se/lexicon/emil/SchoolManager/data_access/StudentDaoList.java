@@ -22,67 +22,37 @@ public class StudentDaoList implements StudentDao {
 
 	@Override
 	public Student getByEmail(String email) {
-
-		return students.stream().filter(student -> student.getEmail().contains(email)).collect(Collectors.toList())
-				.get(0);
-
-//		for (Student student : students) {
-//			if (student.getEmail().contains(email))
-//				return student;
-//		}
-//		return null;
+		return students.stream().
+				filter(student -> student.getEmail().contains(email))
+				.collect(Collectors.toList()).get(0);
 	}
 
 	@Override
 	public Student getByID(String id) {
-
-		return students.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList()).get(0);
-
-//		for (Student student : students) {
-//			if (student.getId().contains(id))
-//				return student;
-//		}
-//		return null;
+		return students.stream()
+				.filter(student -> student.getId().equals(id))
+				.collect(Collectors.toList()).get(0);
 	}
 
 	@Override
 	public List<Student> getByFirstName(String firstName) {
-
-		return students.stream().filter(student -> student.getFirstName().contains(firstName))
+		return students.stream()
+				.filter(student -> student.getFirstName().contains(firstName))
 				.collect(Collectors.toList());
-
-//		List<Student> retStudents = new LinkedList<>();
-//		for (Student student : students) {
-//			if (student.getFirstName().contains(firstName))
-//				retStudents.add(student);
-//		}
-//		return retStudents;
 	}
 
 	@Override
 	public List<Student> getBySurname(String surname) {
-
-		return students.stream().filter(student -> student.getSurname().contains(surname)).collect(Collectors.toList());
-
-//		List<Student> retStudents = new LinkedList<>();
-//		for(Student student : students) {
-//			if(student.getSurname().contains(surname))
-//				retStudents.add(student);
-//		}
-//		return retStudents;
+		return students.stream()
+				.filter(student -> student.getSurname().contains(surname))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Student> getByFullName(String firstName, String surname) {
-
 		return students.stream()
 				.filter(student -> student.getFirstName().contains(firstName) && student.getSurname().contains(surname))
 				.collect(Collectors.toList());
-
-//		  List<Student> retStudents = new LinkedList<>(); for(Student student :
-//		  students) { if(student.getFirstName().contains(firstName) &&
-//		  student.getSurname().contains(surname)) retStudents.add(student); } return
-//		  retStudents;
 	}
 
 	@Override
