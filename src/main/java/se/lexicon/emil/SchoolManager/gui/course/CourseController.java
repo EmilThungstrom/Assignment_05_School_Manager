@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import se.lexicon.emil.SchoolManager.data.Course;
 import se.lexicon.emil.SchoolManager.data.Student;
 import se.lexicon.emil.SchoolManager.gui.search.SearchStudentController;
-import se.lexicon.emil.SchoolManager.gui.student.StudentController;
 
 public class CourseController {
 	@FXML
@@ -67,15 +66,15 @@ public class CourseController {
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root1));
 			stage.showAndWait();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Student student = SearchStudentController.student;
 		SearchStudentController.isPrompt = false;
 
-		if(!(student == null)) {
+		if (!(student == null)) {
 			ArrayList<Student> list = new ArrayList<Student>(course.getStudents());
 			list.add(student);
 			course.setStudents(list);

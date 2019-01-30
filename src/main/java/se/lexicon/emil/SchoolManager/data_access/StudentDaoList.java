@@ -22,30 +22,24 @@ public class StudentDaoList implements StudentDao {
 
 	@Override
 	public Student getByEmail(String email) {
-		return students.stream().
-				filter(student -> student.getEmail().contains(email))
-				.collect(Collectors.toList()).get(0);
+		return students.stream().filter(student -> student.getEmail().contains(email)).collect(Collectors.toList())
+				.get(0);
 	}
 
 	@Override
 	public Student getByID(String id) {
-		return students.stream()
-				.filter(student -> student.getId().equals(id))
-				.collect(Collectors.toList()).get(0);
+		return students.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList()).get(0);
 	}
 
 	@Override
 	public List<Student> getByFirstName(String firstName) {
-		return students.stream()
-				.filter(student -> student.getFirstName().contains(firstName))
+		return students.stream().filter(student -> student.getFirstName().contains(firstName))
 				.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Student> getBySurname(String surname) {
-		return students.stream()
-				.filter(student -> student.getSurname().contains(surname))
-				.collect(Collectors.toList());
+		return students.stream().filter(student -> student.getSurname().contains(surname)).collect(Collectors.toList());
 	}
 
 	@Override

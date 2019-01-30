@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.omg.CORBA.INITIALIZE;
-
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,21 +45,21 @@ public class SearchStudentController {
 	protected TableColumn<Student, String> emailColumn;
 	@FXML
 	protected TableColumn<Student, String> adressColumn;
-	
+
 	@FXML
 	private Button searchTypeButton;
 
 	public static Student student;
 	public static boolean isPrompt;
-	
+
 	@FXML
 	private void initialize() {
-		if(isPrompt)
+		if (isPrompt)
 			searchTypeButton.setVisible(false);
 		else
 			searchTypeButton.setVisible(true);
 	}
-	
+
 	@FXML
 	protected void searchButtonPressed() {
 
