@@ -23,11 +23,11 @@ public class StudentDaoList implements StudentDao {
 	@Override
 	public Student getByEmail(String email) {
 
-		return students.stream().filter(student -> student.getEmail().equals(email)).collect(Collectors.toList())
+		return students.stream().filter(student -> student.getEmail().contains(email)).collect(Collectors.toList())
 				.get(0);
 
 //		for (Student student : students) {
-//			if (student.getEmail().equals(email))
+//			if (student.getEmail().contains(email))
 //				return student;
 //		}
 //		return null;
@@ -39,7 +39,7 @@ public class StudentDaoList implements StudentDao {
 		return students.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList()).get(0);
 
 //		for (Student student : students) {
-//			if (student.getId().equals(id))
+//			if (student.getId().contains(id))
 //				return student;
 //		}
 //		return null;
@@ -48,12 +48,12 @@ public class StudentDaoList implements StudentDao {
 	@Override
 	public List<Student> getByFirstName(String firstName) {
 
-		return students.stream().filter(student -> student.getFirstName().equals(firstName))
+		return students.stream().filter(student -> student.getFirstName().contains(firstName))
 				.collect(Collectors.toList());
 
 //		List<Student> retStudents = new LinkedList<>();
 //		for (Student student : students) {
-//			if (student.getFirstName().equals(firstName))
+//			if (student.getFirstName().contains(firstName))
 //				retStudents.add(student);
 //		}
 //		return retStudents;
@@ -62,11 +62,11 @@ public class StudentDaoList implements StudentDao {
 	@Override
 	public List<Student> getBySurname(String surname) {
 
-		return students.stream().filter(student -> student.getSurname().equals(surname)).collect(Collectors.toList());
+		return students.stream().filter(student -> student.getSurname().contains(surname)).collect(Collectors.toList());
 
 //		List<Student> retStudents = new LinkedList<>();
 //		for(Student student : students) {
-//			if(student.getSurname().equals(surname))
+//			if(student.getSurname().contains(surname))
 //				retStudents.add(student);
 //		}
 //		return retStudents;
@@ -76,12 +76,12 @@ public class StudentDaoList implements StudentDao {
 	public List<Student> getByFullName(String firstName, String surname) {
 
 		return students.stream()
-				.filter(student -> student.getFirstName().equals(firstName) && student.getSurname().equals(surname))
+				.filter(student -> student.getFirstName().contains(firstName) && student.getSurname().contains(surname))
 				.collect(Collectors.toList());
 
 //		  List<Student> retStudents = new LinkedList<>(); for(Student student :
-//		  students) { if(student.getFirstName().equals(firstName) &&
-//		  student.getSurname().equals(surname)) retStudents.add(student); } return
+//		  students) { if(student.getFirstName().contains(firstName) &&
+//		  student.getSurname().contains(surname)) retStudents.add(student); } return
 //		  retStudents;
 	}
 

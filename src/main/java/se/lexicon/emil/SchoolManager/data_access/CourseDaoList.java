@@ -28,7 +28,7 @@ public class CourseDaoList implements CourseDao {
 
 	@Override
 	public List<Course> getByName(String courseName) {
-		return courses.stream().filter(course -> course.getName().equals(courseName)).collect(Collectors.toList());
+		return courses.stream().filter(course -> course.getName().contains(courseName)).collect(Collectors.toList());
 	}
 
 	@Override
