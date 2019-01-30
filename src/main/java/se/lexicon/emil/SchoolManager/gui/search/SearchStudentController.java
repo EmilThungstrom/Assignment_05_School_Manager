@@ -31,7 +31,7 @@ public class SearchStudentController {
 	protected TextField adressField;
 	@FXML
 	protected TextField emailField;
-	
+
 	@FXML
 	protected TableView<Student> searchView;
 	@FXML
@@ -44,33 +44,33 @@ public class SearchStudentController {
 	protected TableColumn<Student, String> emailColumn;
 	@FXML
 	protected TableColumn<Student, String> adressColumn;
-	
+
 	@FXML
 	protected void searchButtonPressed() {
-		
-		if(!idField.getText().isEmpty())
+
+		if (!idField.getText().isEmpty())
 			presentSearchResult(App.studentDao.getByID(idField.getText()));
-		else if(!nameField.getText().isEmpty() && !surnameField.getText().isEmpty())
+		else if (!nameField.getText().isEmpty() && !surnameField.getText().isEmpty())
 			presentSearchResult(App.studentDao.getByFullName(nameField.getText(), surnameField.getText()));
-		else if(!nameField.getText().isEmpty())
+		else if (!nameField.getText().isEmpty())
 			presentSearchResult(App.studentDao.getByFirstName(nameField.getText()));
-		else if(!surnameField.getText().isEmpty())
+		else if (!surnameField.getText().isEmpty())
 			presentSearchResult(App.studentDao.getBySurname(surnameField.getText()));
-		else if(!emailField.getText().isEmpty())
+		else if (!emailField.getText().isEmpty())
 			presentSearchResult(App.studentDao.getByEmail(emailField.getText()));
 		else
 			searchView.setItems(null);
 	}
-	
+
 	protected void presentSearchResult(Student student) {
-		
+
 		ArrayList<Student> tempList = new ArrayList<Student>();
 		tempList.add(student);
 		presentSearchResult(tempList);
 	}
-	
+
 	protected void presentSearchResult(List<Student> students) {
-		
+
 		idColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("id"));
 		nameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("firstName"));
 		surnameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("surname"));
@@ -78,7 +78,7 @@ public class SearchStudentController {
 		adressColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("adress"));
 		searchView.setItems(FXCollections.observableArrayList(students));
 	}
-	
+
 	@FXML
 	private void switchSearchType() {
 		Parent root;
@@ -90,7 +90,7 @@ public class SearchStudentController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	private void searchViewerDoubleClicked(MouseEvent event) {
 		if (event.getClickCount() >= 2 && !searchView.getSelectionModel().isEmpty()) {
@@ -101,8 +101,9 @@ public class SearchStudentController {
 				Stage stage = new Stage();
 				stage.setScene(new Scene(root1));
 				stage.show();
-				
-				((StudentController)fxmlLoader.getController()).presentStudent(searchView.getSelectionModel().getSelectedItem());
+
+				((StudentController) fxmlLoader.getController())
+						.presentStudent(searchView.getSelectionModel().getSelectedItem());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

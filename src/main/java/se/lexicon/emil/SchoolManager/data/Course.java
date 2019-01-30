@@ -7,43 +7,43 @@ import java.util.List;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class Course {
-	
+
 	private int id;
 	private String courseName;
 	private Date startDate;
 	private int weekDuration;
 	private List<Student> students;
-	
-	public Course()
-	{
+
+	public Course() {
 		students = new LinkedList<>();
 		id = Integer.parseInt(RandomStringUtils.random(5, "1234567890ABCDEF"), 16);
 	}
+
 	public Course(String courseName, Date startDate, int weekDuration) {
 		this.courseName = courseName;
 		this.startDate = startDate;
 		this.weekDuration = weekDuration;
-		
+
 		id = Integer.parseInt(RandomStringUtils.random(5, "1234567890ABCDEF"), 16);
 	}
-	
+
 	public void regStudent(Student student) {
-		if(students.contains(student))
+		if (students.contains(student))
 			throw new IllegalArgumentException("A student can only be registred on a course once");
-		
+
 		students.add(student);
 	}
-	
+
 	public boolean unRegStudent(Student student) {
-		for(int i = 0; i < students.size(); i++) {
-			if(students.get(i) == student) {
+		for (int i = 0; i < students.size(); i++) {
+			if (students.get(i) == student) {
 				students.remove(i);
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -55,6 +55,7 @@ public class Course {
 		result = prime * result + weekDuration;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -85,6 +86,7 @@ public class Course {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", courseName=" + courseName + ", startDate=" + startDate + ", weekDuration="
@@ -94,39 +96,39 @@ public class Course {
 	public String getId() {
 		return Integer.toHexString(id);
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return courseName;
 	}
-	
+
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-	
+
 	public Date getStartDate() {
 		return startDate;
 	}
-	
+
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	
+
 	public int getWeekDuration() {
 		return weekDuration;
 	}
-	
+
 	public void setWeekDuration(int weekDuration) {
 		this.weekDuration = weekDuration;
 	}
-	
+
 	public List<Student> getStudents() {
 		return students;
 	}
-	
+
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}

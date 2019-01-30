@@ -2,11 +2,10 @@ package se.lexicon.emil.SchoolManager.gui.student;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import se.lexicon.emil.SchoolManager.App;
 import se.lexicon.emil.SchoolManager.data.Student;
 
 public class StudentController {
-	
+
 	@FXML
 	private TextField idField;
 	@FXML
@@ -17,9 +16,9 @@ public class StudentController {
 	private TextField adressField;
 	@FXML
 	private TextField emailField;
-	
+
 	private Student student;
-	
+
 	@FXML
 	private void newButtonPressed() {
 		idField.setText("");
@@ -28,17 +27,18 @@ public class StudentController {
 		adressField.setText("");
 		emailField.setText("");
 	}
+
 	@FXML
 	private void saveButtonPressed() {
-		
+
 		student.setFirstName(nameField.getText());
 		student.setSurname(surnameField.getText());
 		student.setEmail(emailField.getText());
 		student.setAdress(adressField.getText());
 	}
-	
+
 	public void presentStudent(Student student) {
-		
+
 		this.student = student;
 		idField.setText(student.getId());
 		nameField.setText(student.getFirstName());
