@@ -37,6 +37,11 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surname" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adress" />
+                  <Button mnemonicParsing="false" onAction="#editButtonPressed" prefWidth="75.0" text="Edit">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
                <BorderPane.margin>
                   <Insets top="5.0" />

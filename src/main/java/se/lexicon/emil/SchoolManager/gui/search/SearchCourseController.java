@@ -58,20 +58,7 @@ public class SearchCourseController {
 	@FXML
 	private void searchViewerDoubleClicked(MouseEvent event) {
 		if (event.getClickCount() >= 2 && !searchView.getSelectionModel().isEmpty()) {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../course/Course.fxml"));
-			Parent root1;
-			try {
-				root1 = (Parent) fxmlLoader.load();
-				Stage stage = new Stage();
-				stage.setScene(new Scene(root1));
-				stage.show();
-
-				((CourseController) fxmlLoader.getController())
-						.presentCourse(searchView.getSelectionModel().getSelectedItem());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			openEditView();
 		}
 	}
 
@@ -86,6 +73,29 @@ public class SearchCourseController {
 			presentSearchResult(App.courseDao.getByDate(startDate.getValue()));
 		else
 			searchView.setItems(null);
+	}
+	
+	@FXML
+	private void editButtonPressed( ) {
+		if(!searchView.getSelectionModel().isEmpty())
+			openEditView();
+	}
+	
+	private void openEditView() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../course/Course.fxml"));
+		Parent root1;
+		try {
+			root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root1));
+			stage.show();
+
+			((CourseController) fxmlLoader.getController())
+					.presentCourse(searchView.getSelectionModel().getSelectedItem());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void presentSearchResult(Course course) {

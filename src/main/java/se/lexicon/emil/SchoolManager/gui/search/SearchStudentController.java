@@ -114,21 +114,30 @@ public class SearchStudentController {
 				((Stage) searchView.getScene().getWindow()).close();
 
 			} else {
-
-				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../student/Student.fxml"));
-				Parent root1;
-				try {
-					root1 = (Parent) fxmlLoader.load();
-					Stage stage = new Stage();
-					stage.setScene(new Scene(root1));
-					stage.show();
-
-					((StudentController) fxmlLoader.getController())
-							.presentStudent(searchView.getSelectionModel().getSelectedItem());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				openEditView();
 			}
+		}
+	}
+	
+	@FXML
+	private void editButtonPressed() {
+		if(!searchView.getSelectionModel().isEmpty())
+			openEditView();
+	}
+	
+	private void openEditView() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../student/Student.fxml"));
+		Parent root1;
+		try {
+			root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root1));
+			stage.show();
+
+			((StudentController) fxmlLoader.getController())
+					.presentStudent(searchView.getSelectionModel().getSelectedItem());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
