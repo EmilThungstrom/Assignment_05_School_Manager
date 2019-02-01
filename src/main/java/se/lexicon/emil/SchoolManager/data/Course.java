@@ -1,6 +1,7 @@
 package se.lexicon.emil.SchoolManager.data;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class Course {
 		this.courseName = courseName;
 		this.startDate = startDate;
 		this.weekDuration = weekDuration;
+		
+		students = new ArrayList<Student>();
 
 		id = Integer.parseInt(RandomStringUtils.random(5, "1234567890ABCDEF"), 16);
 	}
