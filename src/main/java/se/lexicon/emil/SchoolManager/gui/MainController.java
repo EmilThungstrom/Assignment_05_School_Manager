@@ -14,24 +14,18 @@ public class MainController {
 	@FXML
 	private void studentButtonPressed() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("student/Student.fxml"));
-		Stage stage = new Stage();
-		stage.setScene(new Scene(root));
-		stage.show();
+		App.getPrimaryStage().setScene(new Scene(root));
 	}
 
 	@FXML
 	private void courseButtonPressed() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("course/Course.fxml"));
-		Stage stage = new Stage();
-		stage.setScene(new Scene(root));
-		stage.show();
+		App.getPrimaryStage().setScene(new Scene(root));
 	}
 
 	@FXML
 	private void searchButtonPressed() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("search/SearchStudent.fxml"));
-		Stage stage = new Stage();
-		stage.setScene(new Scene(root));
-		stage.show();
+		App.getPrimaryStage().setScene(new Scene(root));
 	}
 }
