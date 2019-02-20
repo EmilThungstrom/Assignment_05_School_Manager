@@ -116,6 +116,16 @@ public class CourseController {
 		}
 	}
 	
+	@FXML
+	private void backButtonPressed() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../Main.fxml"));
+			App.getPrimaryStage().setScene(new Scene(root));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private boolean formFilledOut() {
 		return nameField.getText().replaceAll("\\s+","").isEmpty() &&
 				(startDate.getValue() != null) &&

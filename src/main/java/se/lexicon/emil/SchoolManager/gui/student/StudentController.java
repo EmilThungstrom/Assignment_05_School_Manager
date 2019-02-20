@@ -1,6 +1,11 @@
 package se.lexicon.emil.SchoolManager.gui.student;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import se.lexicon.emil.SchoolManager.App;
 import se.lexicon.emil.SchoolManager.data.Student;
@@ -43,6 +48,16 @@ public class StudentController {
 			idField.setText(student.getId());
 			
 			App.studentDao.addStudent(student);
+		}
+	}
+	
+	@FXML
+	private void backButtonPressed() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../Main.fxml"));
+			App.getPrimaryStage().setScene(new Scene(root));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
