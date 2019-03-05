@@ -1,0 +1,3 @@
+# SchoolManager
+
+Assignment for Lexicon
